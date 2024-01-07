@@ -2,7 +2,7 @@
 
 1、安装Anaconda3/Python3.9和matlab2021b
 
-2、按照https://github.com/pytorch/botorch安装botorch、pytorch和gpytorch。
+2、按照https://github.com/pytorch/botorch 安装botorch、pytorch和gpytorch。
 
 ```python
 conda install botorch -c pytorch -c gpytorch -c conda-forge
