@@ -46,30 +46,31 @@ def y_2d_bina(yID, uID, x):
     return torch.tensor(y).squeeze()    # 返回Tensor类型
 
 
-# loaded_variables = loadmat('stepModel_data_IO.mat')     # 加载输入和输出数据
-# yID = loaded_variables['yID']
-# uID = loaded_variables['uID']
-#
-# lb = 1      # 搜索空间下界
-# ub = 10
-#
-# xs = torch.linspace(lb, ub, 101)
-# x1, x2 = torch.meshgrid(xs, xs, indexing="ij")
-# xs = torch.vstack((x1.flatten(), x2.flatten())).transpose(-1, -2)
-#
-# ys = y_2d(yID, uID, xs)
-# ys = torch.reshape(ys, (101, 101))
-# ys = np.array(ys)
-# ys1 = y_2d_bina(yID, uID, xs)
-# ys1 = torch.reshape(ys1, (101, 101))
-# ys1 = np.array(ys1)
-#
-# test_d1 = np.linspace(1, 10, 101)
-# test_d2 = np.linspace(1, 10, 101)
-#
-# variables_dict = {'test_d1': test_d1, 'test_d2': test_d2, 'ys': ys, 'ys1': ys1}
-#
-# savemat(f'test.mat', variables_dict)
+loaded_variables = loadmat('stepModel_data_IO.mat')     # 加载输入和输出数据
+yID = loaded_variables['yID']
+uID = loaded_variables['uID']
+
+lb = 1      # 搜索空间下界
+ub = 10
+
+xs = torch.linspace(lb, ub, 101)
+x1, x2 = torch.meshgrid(xs, xs, indexing="ij")
+xs = torch.vstack((x1.flatten(), x2.flatten())).transpose(-1, -2)
+
+ys = y_2d(yID, uID, xs)
+ys = torch.reshape(ys, (101, 101))
+ys = np.array(ys)
+ys1 = y_2d_bina(yID, uID, xs)
+ys1 = torch.reshape(ys1, (101, 101))
+ys1 = np.array(ys1)
+
+test_d1 = np.linspace(1, 10, 101)
+test_d2 = np.linspace(1, 10, 101)
+
+variables_dict = {'test_d1': test_d1, 'test_d2': test_d2, 'ys': ys, 'ys1': ys1}
+
+savemat(f'test.mat', variables_dict)
+
 loaded_variables = loadmat(f'test.mat')
 test_d_1 = np.array(loaded_variables['test_d1'])
 test_d_2 = np.array(loaded_variables['test_d2'])
